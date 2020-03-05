@@ -35,6 +35,9 @@
 		<Unit filename="capteurTemperature.cpp" />
 		<Unit filename="capteurTemperature.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="thermometre.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
