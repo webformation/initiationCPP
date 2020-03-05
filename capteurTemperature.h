@@ -7,15 +7,15 @@ class capteurTemperature
 public: // pour besoin didactique
     string *nom = nullptr;
     int num;
-    float min;
-    float max;
+    float & min;
+    float & max;
     bool controle = false;
 public:
-    capteurTemperature(string nom, int num) : capteurTemperature(nom, num,0, 0)
+    capteurTemperature(string nom, int num) : capteurTemperature(nom, num,min, max)
     {
         controle = false;
     }
-    capteurTemperature(string nom, int num, float min, float max) : num(num), min(min), max(max),controle(true)
+    capteurTemperature(string nom, int num, float & min, float & max) : num(num), min(min), max(max),controle(true)
     {
         if (nom.size() < 3)
         {
