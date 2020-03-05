@@ -9,5 +9,10 @@ int main()
     capteurTemperature c1("essai",2);
     cout << *(c1.nom) << endl;
     cout << boolalpha << c1.estValide() << endl;
+    capteurTemperature c2("essai",2);
+    cout << "c2 : " <<  *(c2.nom) << endl;
+    cout << (c1==c2) << endl;
+    cout << "c2 : " << *(c2.nom)<< endl;
+    cout << (c1==c2) << endl;
     return 0;
 }

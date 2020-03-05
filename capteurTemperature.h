@@ -50,6 +50,10 @@ public:
         float v = getValeur();
         return (v>= min && v <= max);
     }
+    bool operator==(capteurTemperature ct) {
+        if (this == &ct) return true;
+        return (*nom == *(ct.nom) && num==ct.num);
+    }
 };
 
 
