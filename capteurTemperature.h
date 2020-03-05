@@ -50,7 +50,7 @@ public:
         float v = getValeur();
         return (v>= min && v <= max);
     }
-    bool operator==(capteurTemperature ct) {
+    bool operator==(const capteurTemperature & ct) {
         if (this == &ct) return true;
         return (*nom == *(ct.nom) && num==ct.num);
     }
