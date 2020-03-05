@@ -54,6 +54,8 @@ public:
         if (this == &ct) return true;
         return (*nom == *(ct.nom) && num==ct.num);
     }
+    string getNom() const { return *nom;}
+    friend ostream & operator<<(ostream & out, const capteurTemperature& c);
 };
 
 
