@@ -1,16 +1,16 @@
 #ifndef CAPTEURTEMPERATURE_H_INCLUDED
 #define CAPTEURTEMPERATURE_H_INCLUDED
 #include <exception>
+#include "capteur.h"
+
 extern "C" int thermometre(int num, int code);
-class capteurTemperature
+class capteurTemperature : public capteur
 {
 private:
     static int nb;
 public:
     int static getNb() { return nb;}
 public: // pour besoin didactique
-    string *nom = nullptr;
-    int num;
     float min;
     float max;
     bool controle = false;
@@ -19,23 +19,16 @@ public:
     {
         controle = false;
     }
-    capteurTemperature(string nom, int num, float min, float max) : num(num), min(min), max(max),controle(true)
+    capteurTemperature(string nom, int num, float  min, float  max) : capteur(nom,num), min(min), max(max),controle(true)
     {
-        if (nom.size() < 3)
-        {
-            throw invalid_argument("le nom doit contenir au moins 3 caracteres");
-        }
-        this->nom = new string(nom);
         if (thermometre(num,0) < 0)
         {
             throw runtime_error("echec initialisation du thermometre");
         }
         ++nb;
     }
-    capteurTemperature(const capteurTemperature & ct): min(ct.min),  max(ct.max)
+    capteurTemperature(const capteurTemperature & ct) : capteur(ct)
     {
-        nom = new string(*(ct.nom));
-        num = ct.num;
         controle = ct.controle;
         ++nb;
     }
@@ -83,11 +76,10 @@ public:
     {
         if (this == &ct)
             return true;
-        return (*nom == *(ct.nom) && num==ct.num);
+        return (capteur::operator==(ct) && controle == ct.controle && min == ct.min && max == ct.max);
     }
-    string getNom() const
-    {
-        return *nom;
+    virtual string getNom() const override {
+        return capteur::getNom() + " (capteur temperature)";
     }
     friend ostream & operator<<(ostream & out, const capteurTemperature& c);
 };

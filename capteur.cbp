@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="capteur.h" />
 		<Unit filename="capteurTemperature.cpp" />
 		<Unit filename="capteurTemperature.h" />
 		<Unit filename="main.cpp" />
