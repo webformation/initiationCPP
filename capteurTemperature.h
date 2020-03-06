@@ -27,6 +27,15 @@ public:
             throw runtime_error("echec initialisation du thermometre");
         }
     }
+    capteurTemperature(const capteurTemperature & ct): min(ct.min),  max(ct.max)
+    {
+        nom = new string(*(ct.nom));
+        num = ct.num;
+        controle = ct.controle;
+    }
+    capteurTemperature & operator=(const capteurTemperature & ct) = delete;
+//  cas particulier pour cet exemple parce que min et max sont des références : on a un effet de bord
+//  si on écrit l'operateur d'affectation
     ~capteurTemperature()
     {
         if (nom != nullptr)
@@ -35,26 +44,35 @@ public:
         }
         thermometre(num,1);
     }
-    float getValeur() {
+    float getValeur()
+    {
         int val;
         if ((val=thermometre(num,2)) < 0)
         {
             throw runtime_error("echec lecture du thermometre");
         }
-        else {
+        else
+        {
             return static_cast<float>(val);
         }
     }
-    bool estValide() {
-        if (!controle) return true;
+    bool estValide()
+    {
+        if (!controle)
+            return true;
         float v = getValeur();
         return (v>= min && v <= max);
     }
-    bool operator==(const capteurTemperature & ct) {
-        if (this == &ct) return true;
+    bool operator==(const capteurTemperature & ct)
+    {
+        if (this == &ct)
+            return true;
         return (*nom == *(ct.nom) && num==ct.num);
     }
-    string getNom() const { return *nom;}
+    string getNom() const
+    {
+        return *nom;
+    }
     friend ostream & operator<<(ostream & out, const capteurTemperature& c);
 };
 
