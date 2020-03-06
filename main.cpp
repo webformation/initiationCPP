@@ -3,6 +3,7 @@
 using namespace std;
 #include "capteur.h"
 #include "capteurTemperature.h"
+#include "capteurPression.h"
 
 
 int main()
@@ -24,6 +25,8 @@ int main()
     cout << c3 << endl;
     capteur *cap1 = &c3;
     //cout << *cap1 << endl;
+    cout << cap1->getNom() << endl;
+    cap1 = new capteurPression("pression1", 10);
     cout << cap1->getNom() << endl;
     return 0;
 }
