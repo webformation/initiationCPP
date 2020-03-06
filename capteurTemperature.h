@@ -4,6 +4,10 @@
 extern "C" int thermometre(int num, int code);
 class capteurTemperature
 {
+private:
+    static int nb;
+public:
+    int static getNb() { return nb;}
 public: // pour besoin didactique
     string *nom = nullptr;
     int num;
@@ -26,12 +30,14 @@ public:
         {
             throw runtime_error("echec initialisation du thermometre");
         }
+        ++nb;
     }
     capteurTemperature(const capteurTemperature & ct): min(ct.min),  max(ct.max)
     {
         nom = new string(*(ct.nom));
         num = ct.num;
         controle = ct.controle;
+        ++nb;
     }
     capteurTemperature & operator=(const capteurTemperature & ct)
     {
@@ -52,6 +58,7 @@ public:
             delete nom;
         }
         thermometre(num,1);
+        --nb;
     }
     float getValeur()
     {

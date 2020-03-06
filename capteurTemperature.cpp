@@ -9,3 +9,5 @@ ostream & operator<<(ostream & out, const capteurTemperature& c) {
         out << ", min = " << c.min << ", max = " << c.max ;
     }
 return out;}
+
+int capteurTemperature::nb = 0;

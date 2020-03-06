@@ -15,5 +15,8 @@ int main()
     cout << c2 << endl;
     capteurTemperature *pc1 = new capteurTemperature("suite",3,20,60);
     cout << *pc1 << endl;
+    cout << "Nombre de capteurs : " << pc1->getNb() << endl;
+    capteurTemperature c3(c2);
+    cout << "Nombre de capteurs : " << capteurTemperature::getNb() << endl;
     return 0;
 }
