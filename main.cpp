@@ -4,11 +4,10 @@ using namespace std;
 #include "capteur.h"
 #include "capteurTemperature.h"
 #include "capteurPression.h"
+#include "bloc.h"
 
 
-int main()
-{
-
+int main() {
     capteurTemperature c1("essai",2);
     cout << c1.getNom() << endl;
     cout << boolalpha << c1.estValide() << endl;
@@ -26,9 +25,18 @@ int main()
     cout << c3 << endl;
     capteur *cap1 = &c3;
     //cout << *cap1 << endl;
-    cout << "---------------------\n";
     cout << cap1->getNom() << endl;
     cap1 = new capteurPression("pression1", 10);
     cout << cap1->getNom() << endl;
+    bloc b("maison");
+    cout << b.getInfo() << endl;
+    cout << b.getNbCapteurs() << endl;
+    b.addCapteur(cap1);
+    b.addCapteur(&c1);
+    cout << b.getInfo() << endl;
+    cout << b.getNbCapteurs() << endl;
+    b.delCapteur(cap1);
+    cout << b.getInfo() << endl;
+    cout << b.getNbCapteurs() << endl;
     return 0;
 }
