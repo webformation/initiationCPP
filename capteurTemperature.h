@@ -7,9 +7,7 @@ extern "C" int thermometre(int num, int code);
 class capteurTemperature : public capteur
 {
 private:
-    static int nb;
-public:
-    int static getNb() { return nb;}
+
 public: // pour besoin didactique
     float min;
     float max;
@@ -19,18 +17,18 @@ public:
     {
         controle = false;
     }
-    capteurTemperature(string nom, int num, float  min, float  max) : capteur(nom,num), min(min), max(max),controle(true)
+    capteurTemperature(string nom, int num, float  min, float  max) : capteur(nom,num+2), min(min), max(max),controle(true)
     {
         if (thermometre(num,0) < 0)
         {
             throw runtime_error("echec initialisation du thermometre");
         }
-        ++nb;
+
     }
     capteurTemperature(const capteurTemperature & ct) : capteur(ct)
     {
         controle = ct.controle;
-        ++nb;
+
     }
     capteurTemperature & operator=(const capteurTemperature & ct)
     {
@@ -46,14 +44,11 @@ public:
     }
     ~capteurTemperature()
     {
-        if (nom != nullptr)
-        {
-            delete nom;
-        }
+
         thermometre(num,1);
-        --nb;
+
     }
-    float getValeur()
+    float getValeur  () override
     {
         int val;
         if ((val=thermometre(num,2)) < 0)
@@ -78,9 +73,8 @@ public:
             return true;
         return (capteur::operator==(ct) && controle == ct.controle && min == ct.min && max == ct.max);
     }
-    virtual string getNom() const override {
-        return capteur::getNom() + " (capteur temperature)";
-    }
+
+   virtual string getNom()  const override;
     friend ostream & operator<<(ostream & out, const capteurTemperature& c);
 };
 

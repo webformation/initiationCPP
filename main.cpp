@@ -8,6 +8,7 @@ using namespace std;
 
 int main()
 {
+
     capteurTemperature c1("essai",2);
     cout << c1.getNom() << endl;
     cout << boolalpha << c1.estValide() << endl;
@@ -25,6 +26,7 @@ int main()
     cout << c3 << endl;
     capteur *cap1 = &c3;
     //cout << *cap1 << endl;
+    cout << "---------------------\n";
     cout << cap1->getNom() << endl;
     cap1 = new capteurPression("pression1", 10);
     cout << cap1->getNom() << endl;

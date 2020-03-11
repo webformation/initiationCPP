@@ -26,7 +26,7 @@ public:
             return true;
         return (capteur::operator==(cp) );
     }
-    virtual string getNom() const override {
+     string getNom() const  {
         return capteur::getNom() + " (capteur pression)";
     }
 };

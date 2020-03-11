@@ -3,6 +3,11 @@
 
 class capteur
 {
+private:
+    static int nb;
+public:
+    int static getNb() { return nb;}
+
 protected:
     string *nom = nullptr;
     int num;
@@ -14,11 +19,13 @@ public:
             throw invalid_argument("le nom doit contenir au moins 3 caracteres");
         }
         this->nom = new string(nom);
+        ++nb;
     }
     capteur(const capteur & ct)
     {
         nom = new string(*(ct.nom));
         num = ct.num;
+        ++nb;
     }
     capteur & operator=(const capteur & ct)
     {
@@ -35,6 +42,7 @@ public:
         {
             delete nom;
         }
+        --nb;
     }
     bool operator==(const capteur & ct)
     {
@@ -47,6 +55,7 @@ public:
         return *nom;
     }
     virtual float getValeur() = 0;
+
 
 };
 

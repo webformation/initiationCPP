@@ -10,4 +10,9 @@ ostream & operator<<(ostream & out, const capteurTemperature& c) {
     }
 return out;}
 
-int capteurTemperature::nb = 0;
+
+   string capteurTemperature::getNom()  const  {
+        return capteur::getNom() + " (capteur temperature)";
+    }
+
+
