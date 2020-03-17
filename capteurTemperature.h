@@ -1,6 +1,8 @@
 #ifndef CAPTEURTEMPERATURE_H_INCLUDED
 #define CAPTEURTEMPERATURE_H_INCLUDED
 #include <exception>
+#include "etatValide.h"
+
 extern "C" int thermometre(int num, int code);
 class capteurTemperature
 {
@@ -45,10 +47,12 @@ public:
             return static_cast<float>(val);
         }
     }
-    bool estValide() {
-        if (!controle) return true;
+    etatValide estValide() {
+        if (!controle) return etatValide::valide;
         float v = getValeur();
-        return (v>= min && v <= max);
+        if (v < min) return etatValide::infMinimum;
+        if (v > max) return etatValide::supMaximum;
+        return etatValide::valide;
     }
     bool operator==(const capteurTemperature & ct) {
         if (this == &ct) return true;

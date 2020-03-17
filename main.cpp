@@ -2,6 +2,7 @@
 
 using namespace std;
 #include "capteurTemperature.h"
+#include "etatValide.h"
 
 
 int main()
