@@ -1,12 +1,13 @@
 #ifndef CAPTEUR_H_INCLUDED
 #define CAPTEUR_H_INCLUDED
+#include "exceptionCapteur.h"
 
 class capteur
 {
 private:
     static int nb;
 public:
-    int static getNb() { return nb;}
+    int static getNb() noexcept { return nb;}
 
 protected:
     string *nom = nullptr;
@@ -16,7 +17,7 @@ public:
     {
         if (nom.size() < 3)
         {
-            throw invalid_argument("le nom doit contenir au moins 3 caracteres");
+            throw capteurParametreInvalide("le nom doit contenir au moins 3 caracteres");
         }
         this->nom = new string(nom);
         ++nb;
@@ -44,13 +45,13 @@ public:
         }
         --nb;
     }
-    bool operator==(const capteur & ct)
+    bool operator==(const capteur & ct) noexcept
     {
         if (this == &ct)
             return true;
         return (*nom == *(ct.nom) && num==ct.num);
     }
-    virtual string getNom() const
+    virtual string getNom() const noexcept
     {
         return *nom;
     }

@@ -38,5 +38,12 @@ int main() {
     b.delCapteur(cap1);
     cout << b.getInfo() << endl;
     cout << b.getNbCapteurs() << endl;
+    try {
+        capteurPression cp1("ab", 10);
+    } catch(capteurParametreInvalide ex) {
+        cout << ex.what() << endl;
+    } catch(exceptionCapteur ex) {
+        cout << "Probleme capteur (non gere)" << endl;
+    }
     return 0;
 }

@@ -11,7 +11,7 @@ ostream & operator<<(ostream & out, const capteurTemperature& c) {
 return out;}
 
 
-   string capteurTemperature::getNom()  const  {
+   string capteurTemperature::getNom()  const noexcept {
         return capteur::getNom() + " (capteur temperature)";
     }
 

@@ -26,7 +26,7 @@ public:
             return true;
         return (capteur::operator==(cp) );
     }
-     string getNom() const  {
+     string getNom() const noexcept {
         return capteur::getNom() + " (capteur pression)";
     }
 };
