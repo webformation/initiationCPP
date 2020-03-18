@@ -6,13 +6,13 @@
 #include <algorithm>
 class bloc {
     string nom;
-    vector<capteur *> capteurs;
+    vector<capteur<double> *> capteurs;
 public:
     bloc(string nom) : nom(nom) {}
-    void addCapteur(capteur *c) {
+    void addCapteur(capteur<double> *c) {
         capteurs.push_back(c);
     }
-    void delCapteur(capteur *c) {
+    void delCapteur(capteur<double> *c) {
         auto it = find(capteurs.begin(), capteurs.end(), c);
         if (it != capteurs.end()) {
             capteurs.erase(it);

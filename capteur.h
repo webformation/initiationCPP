@@ -2,7 +2,7 @@
 #define CAPTEUR_H_INCLUDED
 #include "exceptionCapteur.h"
 
-class capteur
+template <typename R> class capteur
 {
 private:
     static int nb;
@@ -55,9 +55,9 @@ public:
     {
         return *nom;
     }
-    virtual float getValeur() = 0;
+    virtual R getValeur() = 0;
 
 
 };
-
+template <typename R> int capteur<R> ::nb = 0;
 #endif // CAPTEUR_H_INCLUDED

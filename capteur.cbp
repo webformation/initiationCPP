@@ -33,11 +33,10 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="bloc.h" />
-		<Unit filename="capteur.cpp" />
 		<Unit filename="capteur.h" />
 		<Unit filename="capteurPression.h" />
-		<Unit filename="capteurTemperature.cpp" />
 		<Unit filename="capteurTemperature.h" />
+		<Unit filename="exceptionCapteur.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="thermometre.c">
 			<Option compilerVar="CC" />

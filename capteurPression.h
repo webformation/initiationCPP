@@ -3,7 +3,7 @@
 
 #include "capteur.h"
 
-class capteurPression: public capteur
+class capteurPression: public capteur<double>
 {
 
 public:
@@ -16,7 +16,7 @@ public:
 
     capteurPression & operator=(const capteurPression & cp) = delete;
 
-    float getValeur()
+    double getValeur()
     {
              return 1.f;
     }
